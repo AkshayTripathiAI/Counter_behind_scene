@@ -1,5 +1,5 @@
 {
-  "name": "behind-scenes-start",
+  "name": "counter-behind-scene",
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
