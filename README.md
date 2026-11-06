@@ -16,8 +16,7 @@ Built as a practice project while learning React.
 
 - React 18
 - Vite 4
-
-`million` is listed in `package.json` but is not wired into the Vite config.
+- [Million](https://million.dev) compiler (enabled in `vite.config.js` with `auto: true`)
 
 ## Getting started
 
