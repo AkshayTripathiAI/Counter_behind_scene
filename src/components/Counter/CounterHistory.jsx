@@ -12,8 +12,10 @@ function HistoryItem({ count }) {
   }
 
   return (
-    <li onClick={handleClick} className={selected ? "selected" : undefined}>
-      {count}
+    <li className={selected ? "selected" : undefined}>
+      <button type="button" aria-pressed={selected} onClick={handleClick}>
+        {count > 0 ? `+${count}` : count}
+      </button>
     </li>
   );
 }
@@ -22,7 +24,7 @@ export default function CounterHistory({ history }) {
   log("<CounterHistory /> rendered", 2);
 
   return (
-    <ol>
+    <ol aria-label="Counter history (click an entry to highlight it)">
       {history.map((count) => (
         <HistoryItem key={count.id} count={count.value} />
       ))}

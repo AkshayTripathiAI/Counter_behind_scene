@@ -2,24 +2,34 @@ import { useState } from "react";
 
 import { log } from "../../log.js";
 
-export default function ConfigureCounter({onSet}) {
-    log('<ConfigureCounter />', 1);
-  const [enteredNumber, setEnteredNumber] = useState(0);
+export default function ConfigureCounter({ onSet }) {
+  log("<ConfigureCounter /> rendered", 1);
+  // Keep the raw string so the field can be cleared or hold "-" while typing.
+  const [enteredNumber, setEnteredNumber] = useState("0");
 
   function handleChange(event) {
-    setEnteredNumber(+event.target.value);
+    setEnteredNumber(event.target.value);
   }
 
-  function handleSetClick() {
-    onSet(enteredNumber);
-    setEnteredNumber(0);
+  function handleSubmit(event) {
+    event.preventDefault();
+    const value = Math.trunc(Number(enteredNumber));
+    if (!Number.isFinite(value)) return;
+    onSet(value);
+    setEnteredNumber("0");
   }
 
   return (
-    <section id="configure-counter">
+    <form id="configure-counter" onSubmit={handleSubmit}>
       <h2>Set Counter</h2>
-      <input type="number" onChange={handleChange} value={enteredNumber} />
-      <button onClick={handleSetClick}>Set</button>
-    </section>
+      <input
+        aria-label="Initial counter value"
+        type="number"
+        step="1"
+        onChange={handleChange}
+        value={enteredNumber}
+      />
+      <button type="submit">Set</button>
+    </form>
   );
 }

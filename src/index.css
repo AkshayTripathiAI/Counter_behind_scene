@@ -178,3 +178,166 @@ section {
   color: #051a19;
   height: 0.9rem;
 }
+
+.button {
+  cursor: pointer;
+  font: inherit;
+}
+
+.button:hover {
+  background-color: #6ff7f1;
+}
+
+button:focus-visible,
+input:focus-visible,
+a:focus-visible {
+  outline: 3px solid #f3d36b;
+  outline-offset: 2px;
+}
+
+#configure-counter {
+  flex-wrap: wrap;
+}
+
+#configure-counter button {
+  font: inherit;
+  font-weight: bold;
+}
+
+.counter-group {
+  margin: 2.5rem 0;
+}
+
+.counter-group h2 {
+  margin: 0;
+  font-size: 1rem;
+  text-align: center;
+  color: #88dbd6;
+}
+
+.counter-group-hint {
+  margin: 0.25rem 0 0.75rem;
+  font-size: 0.85rem;
+  text-align: center;
+  color: #8199a6;
+}
+
+.counter-group .counter {
+  margin: 0;
+}
+
+code {
+  color: #f3d36b;
+}
+
+.counter li {
+  width: auto;
+  min-width: 2.5rem;
+  margin-left: 0;
+  padding: 0;
+}
+
+.counter li button {
+  width: 100%;
+  padding: 0.2rem 0.5rem;
+  font: inherit;
+  color: inherit;
+  background: transparent;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.counter li button:hover {
+  background-color: #1d3534;
+}
+
+#render-log {
+  width: 90%;
+  max-width: 50rem;
+  margin: 0 auto 2rem;
+  padding: 1rem;
+  border: 1px solid #2c4a63;
+  border-radius: 6px;
+  background-color: #0b1422;
+}
+
+.render-log-header {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: baseline;
+}
+
+.render-log-header h2 {
+  margin: 0;
+  font-size: 1rem;
+  color: #fcfabd;
+}
+
+.render-log-header span {
+  flex: 1;
+  font-size: 0.8rem;
+  color: #8199a6;
+}
+
+.render-log-header button {
+  cursor: pointer;
+  font: inherit;
+  padding: 0.2rem 0.75rem;
+  border: 1px solid #2c4a63;
+  border-radius: 4px;
+  background: transparent;
+  color: #d9e2f1;
+}
+
+.render-log-hint {
+  margin: 0.5rem 0;
+  font-size: 0.8rem;
+  color: #8199a6;
+}
+
+#render-log ol {
+  max-height: 16rem;
+  overflow-y: auto;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-family: ui-monospace, 'Cascadia Code', Consolas, monospace;
+  font-size: 0.8rem;
+}
+
+#render-log li {
+  padding: 0.1rem 0.5rem;
+  color: #fcfabd;
+  border-left: 3px solid #04406b;
+}
+
+#render-log li.other {
+  color: #ede6b2;
+  border-left-color: #6a3fd1;
+}
+
+#footer {
+  margin-bottom: 2rem;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+#footer a {
+  color: #88dbd6;
+}
+
+@media (max-width: 640px) {
+  .counter {
+    padding: 1.25rem 0.75rem;
+  }
+
+  .counter p {
+    gap: 0.75rem;
+  }
+
+  .counter p {
+    flex-wrap: wrap;
+  }
+}

@@ -6,17 +6,18 @@ Built as a practice project while learning React.
 
 ## Features
 
-- Set a starting value for the counter; the app tells you whether it is a prime number
-- Increment/decrement buttons with a clickable history list of every change
-- Two counters side by side: one re-mounted via `key` when the configured value changes, one fixed at 0
-- Every component logs its render to the browser console (colour-coded, indented by depth) so you can see exactly what re-renders
-- Uses `memo` and `useCallback` to avoid unnecessary re-renders
+- Set a starting value for the counter (press Enter or click "Set"); the app tells you whether it is a prime number
+- Increment/decrement buttons with a history list of every change (click or keyboard-select an entry to highlight it)
+- Two counters: one re-mounted via `key` when the configured value changes, one fixed at 0 that `memo` keeps from re-rendering
+- In-page **render log** panel showing every component render (indented by depth), so the live demo explains itself without DevTools; the same colour-coded output goes to the browser console
+- Uses `memo`, `useCallback` and `useMemo` (the prime check only re-runs when the initial value changes)
+- Responsive layout and visible keyboard focus styles
 
 ## Tech stack
 
 - React 18
 - Vite 4
-- [Million](https://million.dev) compiler (enabled in `vite.config.js` with `auto: true`)
+- Deployed to GitHub Pages from the `gh-pages` branch (`base: '/Counter_behind_scene/'` in `vite.config.js`)
 
 ## Getting started
 
@@ -29,7 +30,7 @@ npm install
 npm run dev
 ```
 
-Open the URL Vite prints (by default http://localhost:5173) and keep the browser console open to see the render logs.
+Open the URL Vite prints (by default http://localhost:5173) and watch the render log panel (or the browser console).
 
 Other scripts: `npm run build`, `npm run preview`.
 
@@ -38,9 +39,10 @@ Other scripts: `npm run build`, `npm run preview`.
 ```
 src/
   App.jsx                    # holds the chosen start value
-  log.js                     # styled console logger used by every component
+  log.js                     # render logger (console + in-page store)
   components/
     Header.jsx
+    RenderLog.jsx            # render log panel, mounted in its own React root
     Counter/
       ConfigureCounter.jsx   # number input + "Set" button
       Counter.jsx            # memoised counter, prime check

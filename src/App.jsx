@@ -10,12 +10,10 @@ function App() {
   const [chosenCount, setChosenCount] = useState(0);
 
   function handleSetCount(newCount) {
-    setChosenCount(newCount); // this state update is scheduled by react and it will be executed in pretty much instant but it will not be executed immediately
-    //this is a popular misconception that people thinks that they update the state in one line and they can use it from another line
-    console.log(newCount); // this wont work
-    // setChosenCount((prevCount) => prevCount + newCount);
-
-    //react performs state batching while if there are multiple state updates in the same time
+    // State updates are scheduled, not applied immediately: reading
+    // chosenCount on the next line would still give the old value.
+    // React also batches multiple state updates made in the same event.
+    setChosenCount(newCount);
   }
 
   return (
@@ -23,17 +21,40 @@ function App() {
       <Header />
       <main>
         <ConfigureCounter onSet={handleSetCount} />
-        <Counter key={chosenCount} initialCount={chosenCount} />
-        <Counter initialCount={0} />
+        <section className="counter-group">
+          <h2>Counter keyed by the chosen value</h2>
+          <p className="counter-group-hint">
+            Changing the value changes the <code>key</code>, so React throws
+            this counter away and mounts a fresh one.
+          </p>
+          <Counter key={chosenCount} initialCount={chosenCount} />
+        </section>
+        <section className="counter-group">
+          <h2>Independent counter</h2>
+          <p className="counter-group-hint">
+            Wrapped in <code>memo</code> with a constant prop, so setting a
+            new value does not re-render it.
+          </p>
+          <Counter initialCount={0} />
+        </section>
       </main>
+      <footer id="footer">
+        <a
+          href="https://github.com/AkshayTripathiAI/Counter_behind_scene"
+          target="_blank"
+          rel="noreferrer"
+        >
+          View source on GitHub
+        </a>
+      </footer>
     </>
   );
 }
 
 export default App;
 
-// How virtual DOM works in React
-// step 1: Creating a component Tree
-// step 2: Creating a virtual snapshot of the Target HTML code
-// step 3: Compare New Virtual DOM Snapshot to Previous (Old) Virtual DOM snapshot
-// step 4: Re-rendering the component tree
+// How the virtual DOM works in React
+// step 1: Create a component tree
+// step 2: Create a virtual snapshot of the target HTML
+// step 3: Compare the new virtual DOM snapshot to the previous one
+// step 4: Apply only the differences to the real DOM
