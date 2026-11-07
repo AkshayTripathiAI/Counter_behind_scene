@@ -1,5 +1,7 @@
 # Counter Behind the Scenes
 
+**Live demo:** https://akshaytripathiai.github.io/Counter_behind_scene/
+
 A React counter app used to explore how React renders under the hood: component re-execution, memoisation, keys and state batching.
 
 Built as a practice project while learning React.
